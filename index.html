@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook 貼文計數器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>📊 Facebook 貼文計數器</h1>
+                <p class="subtitle">實時追蹤回應數量</p>
+            </div>
+
+            <div class="input-section">
+                <label for="postUrl">貼文網址：</label>
+                <input 
+                    type="url" 
+                    id="postUrl" 
+                    placeholder="輸入 Facebook 貼文網址"
+                    value="https://www.facebook.com/story.php?story_fbid=1653053049517979&id=100044398990795&hpir=1"
+                >
+                <button id="startBtn" onclick="startTracking()">開始追蹤</button>
+            </div>
+
+            <div class="status" id="status"></div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👍</div>
+                    <div class="stat-content">
+                        <div class="stat-label">讚</div>
+                        <div class="stat-value" id="likesCount">-</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">💬</div>
+                    <div class="stat-content">
+                        <div class="stat-label">留言</div>
+                        <div class="stat-value" id="commentsCount">-</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">↗️</div>
+                    <div class="stat-content">
+                        <div class="stat-label">分享</div>
+                        <div class="stat-value" id="sharesCount">-</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">👁️</div>
+                    <div class="stat-content">
+                        <div class="stat-label">觀看</div>
+                        <div class="stat-value" id="viewsCount">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings">
+                <label for="refreshRate">更新頻率（秒）：</label>
+                <select id="refreshRate" onchange="updateRefreshRate()">
+                    <option value="5">5 秒</option>
+                    <option value="10" selected>10 秒</option>
+                    <option value="30">30 秒</option>
+                    <option value="60">1 分鐘</option>
+                </select>
+            </div>
+
+            <div class="history">
+                <h3>📈 更新歷史</h3>
+                <div id="historyLog" class="history-log"></div>
+            </div>
+
+            <button id="stopBtn" onclick="stopTracking()" class="stop-btn" disabled>停止追蹤</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
